@@ -12,7 +12,7 @@
 <body>
 <?php
 
-require_once ('vendor/autoload.php');
+require_once (__DIR__.'/vendor/autoload.php');
      
 //Reading data from spreadsheet.
 $tracking_live = Shippo::setApiKey('shippo_live_ec6a3a8f1a1b001866162bb5826ac8b1681ee1e1');
