@@ -1,5 +1,5 @@
 {
-  "name": "ot-tracking-php",
+  "name": "ot/ot-tracking-php",
   "description": "A PHP library for connecting with multiple carriers (FedEx, UPS, USPS) using Shippo.",
   "keywords": [
     "ups",
