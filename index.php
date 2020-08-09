@@ -15,9 +15,9 @@
 require_once (__DIR__.'/vendor/autoload.php');
      
 //Reading data from spreadsheet.
-$tracking_live = Shippo::setApiKey('shippo_live_ec6a3a8f1a1b001866162bb5826ac8b1681ee1e1');
-$tracking_test = Shippo::setApiKey('shippo_test_005caf853e23501dafbe806ee9e6dbc932861933');
-$tracking_key = $tracking_test;
+//$tracking_live = Shippo::setApiKey('shippo_live_ec6a3a8f1a1b001866162bb5826ac8b1681ee1e1');
+//$tracking_test = Shippo::setApiKey('shippo_test_005caf853e23501dafbe806ee9e6dbc932861933');
+//$tracking_key = $tracking_test;
      
 $client = new Google_Client();
 $client->setApplicationName("OT Global Protection Ship Tracker");
