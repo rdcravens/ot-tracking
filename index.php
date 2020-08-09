@@ -56,8 +56,8 @@ $status_params = array(
     'carrier' => $values[$i][1],
     'metadata' => ''
 );
-$status = Shippo_Track::get_status($status_params);
-$webhook_response = Shippo_Track::create($create_params);
+//$status = Shippo_Track::get_status($status_params);
+//$webhook_response = Shippo_Track::create($create_params);
      
 ?>
   <div class="row desc">
