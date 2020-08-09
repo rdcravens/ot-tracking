@@ -1,12 +1,12 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "535707279e7724d24cb5efb2f828a1ba",
+    "content-hash": "ca5871891c36b301b6e1e16d752463b6",
     "packages": [],
-    "packages-dev":  [
+    "packages-dev": [
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
@@ -22,7 +22,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "php": ">=5.3,<8.0-DEV"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1.8",
@@ -1315,7 +1315,8 @@
                 "validate"
             ],
             "time": "2016-11-23T20:04:58+00:00"
-        }],
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
@@ -1327,5 +1328,5 @@
         "ext-json": "*",
         "ext-mbstring": "*"
     },
-    "platform-dev": [],
+    "platform-dev": []
 }
