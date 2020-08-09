@@ -27,7 +27,7 @@ $client->setAuthConfig('./credentials.json');
 $service = new Google_Service_Sheets($client);
 
 $spreadsheetId = '13CecB3s0czSJIWxQjIBwfpGExTULXk_IdtFMKzplZJ0'; //It is present in your URL
-$get_range = 'Tracking!A2:B25';
+$get_range = 'Tracking!A2:C150';
 
 //Request to get data from spreadsheet.
 $response = $service->spreadsheets_values->get($spreadsheetId, $get_range);
@@ -38,20 +38,22 @@ $values = $response->getValues();
 ?>
   <div class="row">
     <div class="col-1" style="text-align: left; font-size: 10px; font-weight: bold;">Order</div>
-    <div class="col-1" style="text-align: left; font-size: 10px; font-weight: bold;">Tracking</div>
-    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;"></div>
-    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;"></div>
-    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;"></div>
-    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;"></div>
-    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;"></div>
+    <div class="col-1" style="text-align: left; font-size: 10px; font-weight: bold;">Carrier</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">Tracking #</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">Original ETA</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">New ETA</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">Current Status</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">Status Date</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">Notes</div>
+    <div class="col-2" style="text-align: left; font-size: 10px; font-weight: bold;">To Address</div>
   </div>
 
 <?php
 for($i=0;$i<count($values);$i++) {
 
 $status_params = array(
-    'id' => '1Z7434680496934031',
-    'carrier' => 'ups'
+    'id' => $values[$i][0],
+    'carrier' => $values[$i][1]
 );
 $status = Shippo_Track::get_status($status_params);
 
@@ -59,13 +61,13 @@ $status = Shippo_Track::get_status($status_params);
   <div class="row desc">
     <div class="col-1" style="text-align: left; font-size: 10px"><?php echo $values[$i][0].'-';  ?></div>
     <div class="col-1" style="text-align: left; font-size: 10px"><?php echo $values[$i][1].'<br>';  ?></div>
-    <div class="col-2"><?php $webhook_response['carrier'] ?></div>
-    <div class="col-2"><?php $webhook_response['original_eta'] ?></div>   
-    <div class="col-2"><?php $webhook_response['eta'] ?></div>   
-    <div class="col-2"><?php $webhook_response['address_from'] ?></div>
+    <div class="col-1" style="text-align: left; font-size: 10px"><?php echo $values[$i][2].'<br>';  ?></div>
+    <div class="col-1"><?php $webhook_response['original_eta'] ?></div>   
+    <div class="col-1"><?php $webhook_response['eta'] ?></div>
+    <div class="col-1"><?php $webhook_response['tracking_status'] ?></div>
+    <div class="col-1"><?php $webhook_response['status_date'] ?></div>   
+    <div class="col-3"><?php echo $values[$i][3].'<br>';  ?></div>
     <div class="col-2"><?php $webhook_response['address_to'] ?></div>
-    <div class="col-2"><?php $webhook_response['tracking_status'] ?></div>
-    <div class="col-2"><?php $webhook_response['status_date'] ?></div>   
   </div>
 <?php 
 }
