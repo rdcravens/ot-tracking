@@ -12,8 +12,7 @@
 <body>
 <?php
 
-require_once ('./vendor/autoload.php');
-//require_once('./lib/Shippo.php');
+require_once ('/vendor/autoload.php');
      
 //Reading data from spreadsheet.
 $tracking_live = Shippo::setApiKey('shippo_live_ec6a3a8f1a1b001866162bb5826ac8b1681ee1e1');
@@ -58,7 +57,8 @@ $status_params = array(
     'metadata' => ''
 );
 $status = Shippo_Track::get_status($status_params);
-
+$webhook_response = Shippo_Track::create($create_params);
+     
 ?>
   <div class="row desc">
     <div class="col-1" style="text-align: left; font-size: 10px"><?php echo $values[$i][0].'-';  ?></div>
