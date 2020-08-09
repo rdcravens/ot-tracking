@@ -12,8 +12,7 @@
 <body>
 <?php
 
-//require_once ('./vendor/autoload.php');
-     
+require_once ('./vendor/autoload.php');
 require_once('./lib/Shippo.php');
      
 //Reading data from spreadsheet.
