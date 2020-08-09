@@ -1,5 +1,5 @@
 {
-  "name": "shippo/shippo-php",
+  "name": "ot-tracking-php",
   "description": "A PHP library for connecting with multiple carriers (FedEx, UPS, USPS) using Shippo.",
   "keywords": [
     "ups",
@@ -11,14 +11,6 @@
     "shipping",
     "tracking",
     "address"
-  ],
-  "homepage": "https://goshippo.com/",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Shippo & Contributors",
-      "homepage": "https://goshippo.com/"
-    }
   ],
   "require": {
     "php": ">=5.2",
