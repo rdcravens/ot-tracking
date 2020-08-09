@@ -19,7 +19,7 @@ $client = new Google_Client();
 $client->setApplicationName("OT Global Protection Ship Tracker");
 $client->setScopes([Google_Service_Sheets::SPREADSHEETS]);
 $client->setAccessType('offline');
-$client->setAuthConfig('./credentials.json');
+$client->setAuthConfig('https://www.cravens-consulting.com/credentials.json');
 $service = new Google_Service_Sheets($client);
 
 $spreadsheetId = '13CecB3s0czSJIWxQjIBwfpGExTULXk_IdtFMKzplZJ0'; //It is present in your URL
