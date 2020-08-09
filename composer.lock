@@ -22,18 +22,14 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3,<8.0-DEV",
-                "ext-curl": "*",
-                "ext-json": "*",
+                "php": ">=5.3,<8.0-DEV"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1.8",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "squizlabs/php_codesniffer": "~2.0",
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "overtrue/phplint": "^1.2",
-                "phpunit/phpunit": "^8"
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
             "extra": {
