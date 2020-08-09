@@ -12,14 +12,13 @@
 <body>
 <?php
 
-require_once ('./vendor/autoload.php');
-require_once ('./vendor/easypost/lib/easypost.php');
+//require_once ('./vendor/autoload.php');
 
 //Reading data from spreadsheet.
-$tracking = \EasyPost\EasyPost::setApiKey('uFSLSdRREeyCXFUaOigD4g');
-//\EasyPost\EasyPost::setApiKey('uFSLSdRREeyCXFUaOigD4g');
-//$tracker = \EasyPost\Tracker::create(array("tracking_code" => "9400110898825022579493","carrier" => "USPS"));
-
+$tracking_live = Shippo::setApiKey('shippo_live_ec6a3a8f1a1b001866162bb5826ac8b1681ee1e1');
+$tracking_test = Shippo::setApiKey('shippo_test_005caf853e23501dafbe806ee9e6dbc932861933');
+$tracking_key = $tracking_test;
+     
 $client = new Google_Client();
 $client->setApplicationName("OT Global Protection Ship Tracker");
 $client->setScopes([Google_Service_Sheets::SPREADSHEETS]);
@@ -50,21 +49,23 @@ $values = $response->getValues();
 <?php
 for($i=0;$i<count($values);$i++) {
 
-$tracking_code = '1Z7434680496934031';
-$carrier = 'UPS';
-// create test tracker
-//$tracker = \EasyPost\Tracker::create(array('tracking_code' => $tracking_code, 'carrier' => $carrier));
-//$data = json_decode($json_data);
+$status_params = array(
+    'id' => '1Z7434680496934031',
+    'carrier' => 'ups'
+);
+$status = Shippo_Track::get_status($status_params);
 
 ?>
   <div class="row desc">
     <div class="col-1" style="text-align: left; font-size: 10px"><?php echo $values[$i][0].'-';  ?></div>
     <div class="col-1" style="text-align: left; font-size: 10px"><?php echo $values[$i][1].'<br>';  ?></div>
-    <div class="col-2"><?php //var_dump ($data); ?></div>
-    <div class="col-2"></div>
-    <div class="col-2"></div>
-    <div class="col-2"></div>
-    <div class="col-2"></div>
+    <div class="col-2"><?php $webhook_response['carrier'] ?></div>
+    <div class="col-2"><?php $webhook_response['original_eta'] ?></div>   
+    <div class="col-2"><?php $webhook_response['eta'] ?></div>   
+    <div class="col-2"><?php $webhook_response['address_from'] ?></div>
+    <div class="col-2"><?php $webhook_response['address_to'] ?></div>
+    <div class="col-2"><?php $webhook_response['tracking_status'] ?></div>
+    <div class="col-2"><?php $webhook_response['status_date'] ?></div>   
   </div>
 <?php 
 }
