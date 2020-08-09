@@ -13,7 +13,9 @@
 <?php
 
 //require_once ('./vendor/autoload.php');
-
+     
+require_once('./lib/Shippo.php');
+     
 //Reading data from spreadsheet.
 $tracking_live = Shippo::setApiKey('shippo_live_ec6a3a8f1a1b001866162bb5826ac8b1681ee1e1');
 $tracking_test = Shippo::setApiKey('shippo_test_005caf853e23501dafbe806ee9e6dbc932861933');
@@ -27,7 +29,7 @@ $client->setAuthConfig('./credentials.json');
 $service = new Google_Service_Sheets($client);
 
 $spreadsheetId = '13CecB3s0czSJIWxQjIBwfpGExTULXk_IdtFMKzplZJ0'; //It is present in your URL
-$get_range = 'Tracking!A2:C150';
+$get_range = 'Tracking!A2:D150';
 
 //Request to get data from spreadsheet.
 $response = $service->spreadsheets_values->get($spreadsheetId, $get_range);
@@ -52,8 +54,9 @@ $values = $response->getValues();
 for($i=0;$i<count($values);$i++) {
 
 $status_params = array(
-    'id' => $values[$i][0],
-    'carrier' => $values[$i][1]
+    'id' => $values[$i][2],
+    'carrier' => $values[$i][1],
+    'metadata' => ''
 );
 $status = Shippo_Track::get_status($status_params);
 
